@@ -1,7 +1,8 @@
 load waypointData.mat
 
 rng(10);
-[ur5e_robot,env] = create();
+[ur5e_robot,config, partFeeder, toolStationBase, platform, box0, box1] = create();
+env = {partFeeder, toolStationBase, platform, box0, box1};
 
 planner = manipulatorRRT(ur5e_robot,env);
 planner.MaxConnectionDistance = 0.45;
