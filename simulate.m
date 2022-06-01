@@ -1,3 +1,6 @@
+clear
+clc
+addpath(genpath(pwd));
 rng(42);
 
 % Create env and compute ik waypoints
