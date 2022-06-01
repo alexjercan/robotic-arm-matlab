@@ -5,7 +5,7 @@ function [base, feeder] = constructToolStation(globalPose, showResults)
     end
 
     % Create the base
-    base = collisionBox(.2, .2, .1);
+    base = collisionBox(.2, .2, .4);
     base.Pose = trvec2tform([0 0 base.Z/2]);
 
     % Add the part feeder and position relative to base

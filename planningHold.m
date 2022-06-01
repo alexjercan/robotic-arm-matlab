@@ -1,12 +1,14 @@
 load waypointData.mat
 
+rng(42);
+
 % Create env
 [ur5e_robot,config, partFeeder, toolStationBase, platform, box0, box1] = create();
 env = {partFeeder, toolStationBase, platform, box0, box1};
 
 % Waypoints to use in sim
-startConfig = waypointData(1,:);
-goalConfig = waypointData(2,:);
+startConfig = ikPoints(1,:);
+goalConfig = ikPoints(2,:);
 
 % Create can as a rigid body
 cylinder1 = env{1};
@@ -59,7 +61,7 @@ ur5e_robot.DataFormat = "row";
 
 % For each path segment, step through all the configurations
 for configIdx = 1:size(path,1)
-    show(ur5e_robot, path(configIdx,:), 'Collisions','on','Visuals','off', "FastUpdate",true, "PreservePlot",false,"Parent",ax);
+    show(ur5e_robot, path(configIdx,:), 'Collisions','on','Visuals','on', "FastUpdate",true, "PreservePlot",false,"Parent",ax);
     waitfor(r);
 end
 
