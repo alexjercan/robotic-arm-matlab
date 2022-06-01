@@ -1,9 +1,8 @@
-load waypointData.mat
-
 rng(42);
 
-% Create env
+% Create env and compute ik waypoints
 [ur5e_robot,config, partFeeder, toolStationBase, platform, box0, box1] = create();
+ikPoints = myIKSolver(ur5e_robot, partFeeder, box0, box1);
 env = {partFeeder, toolStationBase, platform, box0, box1};
 
 % Waypoints to use in sim
