@@ -10,7 +10,6 @@ set(pathFig, "Visible", "on")
 
 % Set up timing and configure robot
 r = rateControl(10);
-tvec = linspace(1,numWaypoints,numWaypoints*numPts);
 ur5e_robot.DataFormat = "row";
 
 % Animate all path segments
