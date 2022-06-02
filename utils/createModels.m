@@ -1,4 +1,4 @@
-function [ur5e_robot,config, partFeeder, toolStationBase, platform, box0, box1] = create()
+function [ur5e_robot,config, partFeeder, toolStationBase, platform, box0, box1] = createModels()
     % Load robot
     ur5e_robot = loadrobot("universalUR5e");
     
