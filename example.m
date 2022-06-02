@@ -3,6 +3,8 @@ clear
 clc
 addpath(genpath(pwd));
 
+rng();
+
 % Create an image of the ball
 circlePixels = mkCircle();
 
@@ -11,8 +13,14 @@ image(circlePixels);
 title('Binary image of a circle');
 pause(1);
 
-% Based on the color of the ball choose target to be 2 or 3 TODO
-targetBoxIndex = 2;
+% Based on the color of the ball choose target to be 2 or 3
+centerX = 320;
+centerY = 240;
+if (circlePixels(centerY,centerX,1) == 0) && (circlePixels(centerY,centerX,2) == 0) && (circlePixels(centerY,centerX,3) == 0)
+    targetBoxIndex = 2;
+else
+    targetBoxIndex = 3;
+end
 
 % Set the seed for the movement of the robot arm
 rng(42);
