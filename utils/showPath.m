@@ -24,6 +24,5 @@ function showPath(robot,env,path)
     
     % Hold the pose and update the title each time a waypoint is reached
     title(sprintf('Segment completed'), "Parent",ax);
-    pause(1);
 end
 
