@@ -2,6 +2,7 @@
 clear
 clc
 addpath(genpath(pwd));
+world = 2;
 
 rng();
 
@@ -27,7 +28,7 @@ rng(42);
 
 % Create env and compute ik waypoints
 tic;
-[ur5e_robot,env,ikPoints] = createWorld();
+[ur5e_robot,env,ikPoints] = createWorld(world);
 elapsedTime = toc;
 disp(['Created world in ',num2str(elapsedTime), ' seconds']);
 
@@ -40,7 +41,13 @@ goalConfig = ikPoints(targetBoxIndex,:);
 
 % Path planning
 tic;
-path = planPath(ur5e_robot,env,startConfig,goalConfig);
+fileName = "path" + int2str(world) + "_1_" + int2str(targetBoxIndex) + ".mat";
+if isfile(fileName)
+    path = load(fileName).path;
+else
+    path = planPath(ur5e_robot,env,startConfig,goalConfig);
+    save(fileName,"path");
+end
 elapsedTime = toc;
 disp(['Done planning for segment in ',num2str(elapsedTime), ' seconds']) %i in %f seconds\n])
 
@@ -57,7 +64,13 @@ goalConfig = ikPoints(1,:);
 
 % Path planning
 tic;
-path = planPath(ur5e_robot,env,startConfig,goalConfig);
+fileName = "path" + int2str(world) + "_" + int2str(targetBoxIndex) + "_1"  + ".mat";
+if isfile(fileName)
+    path = load(fileName).path;
+else
+    path = planPath(ur5e_robot,env,startConfig,goalConfig);
+    save(fileName,"path");
+end
 elapsedTime = toc;
 disp(['Done planning for segment in ',num2str(elapsedTime), ' seconds']) %i in %f seconds\n])
 
