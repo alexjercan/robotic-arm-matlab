@@ -1,4 +1,4 @@
-function [pixels] = mkCircle()
+function [pixels] = mkCircle(circle)
     imageSizeX = 640;
     imageSizeY = 480;
     [columnsInImage,rowsInImage] = meshgrid(1:imageSizeX, 1:imageSizeY);
@@ -11,7 +11,14 @@ function [pixels] = mkCircle()
     
     pixels = ones(imageSizeY, imageSizeX, 3);
     
-    number = rand(1);
+    if circle == 0
+        number = rand(1);
+    elseif circle == 1
+        number = 0;
+    else
+        number = 1;
+    end
+
     if number < 0.5
         pixels(:, :, 1) = pixels(:, :, 1) - circlePixels;
     end

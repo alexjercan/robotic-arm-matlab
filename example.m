@@ -3,11 +3,12 @@ clear
 clc
 addpath(genpath(pwd));
 world = 2;
+circle = 0;
 
 rng();
 
 % Create an image of the ball
-circlePixels = mkCircle();
+circlePixels = mkCircle(circle);
 
 % Display the image
 image(circlePixels);
@@ -53,7 +54,8 @@ disp(['Done planning for segment in ',num2str(elapsedTime), ' seconds']) %i in %
 
 % Show path taken
 clf();
-showPath(ur5e_robot,env,path);
+fileName = "world" + int2str(world) + "_" + "circle" + int2str(circle) + "_1";
+showPath(ur5e_robot,env,path, fileName);
 
 % Detach ball from the arm
 [ur5e_robot,env] = detechBallFromRobot(ur5e_robot,env,goalConfig);
@@ -76,4 +78,5 @@ disp(['Done planning for segment in ',num2str(elapsedTime), ' seconds']) %i in %
 
 % Show path taken
 clf();
-showPath(ur5e_robot,env,path);
+fileName = "world" + int2str(world) + "_" + "circle" + int2str(circle) + "_2";
+showPath(ur5e_robot,env,path, fileName);
