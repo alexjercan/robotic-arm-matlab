@@ -1,5 +1,6 @@
 clear
 clc
+mkdir out;
 addpath(genpath(pwd));
 
 showExample(1, 1);
