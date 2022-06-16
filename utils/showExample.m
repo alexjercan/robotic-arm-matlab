@@ -1,4 +1,4 @@
-function showExample(world,circle)
+function showExample(world,circle,save)
     % Create an image of the ball
     circlePixels = mkCircle(circle);
     
@@ -47,7 +47,7 @@ function showExample(world,circle)
     % Show path taken
     clf();
     fileName = "world" + int2str(world) + "_" + "circle" + int2str(circle) + "_1";
-    showPath(ur5e_robot,env,path, fileName);
+    showPath(ur5e_robot,env,path, fileName, save);
     
     % Detach ball from the arm
     [ur5e_robot,env] = detechBallFromRobot(ur5e_robot,env,goalConfig);
@@ -71,6 +71,6 @@ function showExample(world,circle)
     % Show path taken
     clf();
     fileName = "world" + int2str(world) + "_" + "circle" + int2str(circle) + "_2";
-    showPath(ur5e_robot,env,path, fileName);
+    showPath(ur5e_robot,env,path, fileName, save);
 end
 

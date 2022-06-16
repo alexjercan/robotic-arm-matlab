@@ -9,6 +9,8 @@ function [robot] = createRobot()
 
     handBaseDims = [0.05,0.01];
     fingerDims = [0.01,0.01];
+    % handBaseDims = [0.1,0.01];
+    % fingerDims = [0.01,0.1];
     epsT = trvec2tform([0 0 1e-2]);
 
     collHandBase = collisionCylinder(handBaseDims(1),handBaseDims(2)/2);

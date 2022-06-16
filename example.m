@@ -3,7 +3,8 @@ clear
 clc
 addpath(genpath(pwd));
 world = 2;
-circle = 0;
+circle = 1;
+saveFig = false;
 
 rng();
 
@@ -55,7 +56,7 @@ disp(['Done planning for segment in ',num2str(elapsedTime), ' seconds']) %i in %
 % Show path taken
 clf();
 fileName = "world" + int2str(world) + "_" + "circle" + int2str(circle) + "_1";
-showPath(ur5e_robot,env,path, fileName);
+showPath(ur5e_robot,env,path, fileName, saveFig);
 
 % Detach ball from the arm
 [ur5e_robot,env] = detechBallFromRobot(ur5e_robot,env,goalConfig);
@@ -79,4 +80,4 @@ disp(['Done planning for segment in ',num2str(elapsedTime), ' seconds']) %i in %
 % Show path taken
 clf();
 fileName = "world" + int2str(world) + "_" + "circle" + int2str(circle) + "_2";
-showPath(ur5e_robot,env,path, fileName);
+showPath(ur5e_robot,env,path, fileName, saveFig);

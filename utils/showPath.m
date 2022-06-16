@@ -1,4 +1,4 @@
-function [points] = showPath(robot,env,path,name)
+function [points] = showPath(robot,env,path,name,saveF)
     showRobot = copy(robot);
 
     % Display the world
@@ -28,7 +28,9 @@ function [points] = showPath(robot,env,path,name)
     for configIdx = 1:size(path,1)
         show(showRobot, path(configIdx,:), 'Collisions','on','Visuals','on', "FastUpdate",true, "PreservePlot",false,"Parent",ax);
         
-        exportgraphics(gcf,sprintf('out/%s_%d.png',name,configIdx),'Resolution',300)
+        if saveF
+            exportgraphics(gcf,sprintf('out/%s_%d.png',name,configIdx),'Resolution',300)
+        end
         waitfor(r);
     end
     
