@@ -11,7 +11,7 @@ function [points] = showPath(robot,env,path,name,saveF)
     % Display the figure window the animation
     pathFig = ancestor(ax, 'figure');
     set(pathFig, "Visible", "on")
-    
+
     % Set up timing and configure robot
     r = rateControl(10);
     showRobot.DataFormat = "row";
@@ -33,7 +33,7 @@ function [points] = showPath(robot,env,path,name,saveF)
         end
         waitfor(r);
     end
-    
+
     % Hold the pose and update the title each time a waypoint is reached
     title(sprintf('Segment completed'), "Parent",ax);
     hold off
